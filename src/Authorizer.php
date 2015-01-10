@@ -125,6 +125,14 @@ class Authorizer
         return $this->issuer->getGrantType('authorization_code')->newAuthorizeRequest($ownerType, $ownerId, $params);
     }
 
+    public function issueAccessTokenWithImplicit($userId)
+    {
+        return $this->
+            issuer->
+            getGrantType('implicit')->
+            completeFlowWithUserId($userId);
+    }
+
     /**
      * Generate a redirect uri when the auth code request is denied by the user
      * @return string a correctly formed url to redirect back to
